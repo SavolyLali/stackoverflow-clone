@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Test
 
 on:
   push:
@@ -17,14 +17,13 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
+          distribution: 'adopt'
+          server-id: github
+          server-username: ${{ github.actor }}
+          server-password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
       - name: Run tests
         run: mvn test
-
-      - name: Deploy to server
-        run: |
-          # Add your deployment commands here, such as copying the built JAR to the server
-          # Example: scp target/*.jar user@server:/path/to/deploy
