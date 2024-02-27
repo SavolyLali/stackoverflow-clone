@@ -1,6 +1,6 @@
 package com.lajosdanielsavoly.stackoverflowclone.services.user;
 
-import com.lajosdanielsavoly.stackoverflowclone.dtos.SignupDTO;
+import com.lajosdanielsavoly.stackoverflowclone.dtos.SignupRequest;
 import com.lajosdanielsavoly.stackoverflowclone.dtos.UserDTO;
 import com.lajosdanielsavoly.stackoverflowclone.entities.User;
 import com.lajosdanielsavoly.stackoverflowclone.repositories.UserRepository;
@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public UserDTO createUser(SignupDTO signupDTO) {
+    public UserDTO createUser(SignupRequest signupDTO) {
         User user = new User();
         user.setEmail(signupDTO.getEmail());
         user.setName(signupDTO.getName());

@@ -3,7 +3,7 @@ package com.lajosdanielsavoly.stackoverflowclone.dtos;
 import lombok.Data;
 
 @Data
-public class SignupDTO {
+public class SignupRequest {
 
     private Long id;
     private String name;
