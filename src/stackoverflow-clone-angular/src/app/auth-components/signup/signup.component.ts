@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class SignupComponent {
 
-  signupForm: FormGroup | undefined;
+  signupForm: FormGroup = new FormGroup({});
 
   constructor(
     private service: AuthService,
@@ -26,4 +26,7 @@ export class SignupComponent {
   }
 
 
+  signup() {
+    console.log(this.signupForm.value);
+  }
 }
