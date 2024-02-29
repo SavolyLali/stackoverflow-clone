@@ -13,6 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule} from "@angular/forms";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { ReactiveFormsModule, FormsModule} from "@angular/forms";
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
