@@ -1,5 +1,7 @@
 package com.lajosdanielsavoly.stackoverflowclone.filter;
 
+import com.lajosdanielsavoly.stackoverflowclone.services.jwt.UserDetailsServiceImpl;
+import com.lajosdanielsavoly.stackoverflowclone.services.utils.JWTUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +13,14 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+
+    private final UserDetailsServiceImpl userDetailsService;
+    private final JWTUtil jwtUtil;
+
+    public JwtRequestFilter(UserDetailsServiceImpl userDetailsService, JWTUtil jwtUtil) {
+        this.userDetailsService = userDetailsService;
+        this.jwtUtil = jwtUtil;
+    }
 
 
     @Override
