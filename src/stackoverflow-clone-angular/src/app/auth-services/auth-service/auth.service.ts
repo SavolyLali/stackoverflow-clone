@@ -22,8 +22,11 @@ export class AuthService {
     return this.http.post(BASIC_URL + 'sign-up', signupRequest);
   }
 
-  login(loginRequest: any): Observable<any> {
-    return this.http.post(BASIC_URL + 'authentication', loginRequest,
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(BASIC_URL + 'authentication', {
+        email,
+        password
+      },
       {observe: 'response'})
       .pipe(
         tap(__ => this.log("User Authentication")),
