@@ -1,5 +1,26 @@
-import { CanActivateFn } from '@angular/router';
+import {Injectable} from "@angular/core";
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
+import {StorageService} from "../../auth-services/storage-service/storage.service";
 
-export const noAuthGuard: CanActivateFn = (route, state) => {
-  return true;
-};
+@Injectable(
+    {
+        providedIn: 'root'
+    }
+)
+export class NoAuthGuard implements CanActivate {
+
+    constructor(
+        private router: Router
+    ) {
+    }
+
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot
+    ): boolean {
+        if (StorageService.hasToken()) {
+            this.router.navigateByUrl('/user/dashboard');
+            return false;
+        }
+        return true;
+    }
+
+}
