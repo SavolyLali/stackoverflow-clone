@@ -5,6 +5,9 @@ import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import {UserRoutingModule} from './user-routing.module';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {PostQuestionComponent} from './components/post-question/post-question.component';
+import {MatError, MatFormField} from "@angular/material/form-field";
+import {MatInput} from "@angular/material/input";
+import {MatButton} from "@angular/material/button";
 
 
 @NgModule({
@@ -17,7 +20,11 @@ import {PostQuestionComponent} from './components/post-question/post-question.co
     UserRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatError,
+    MatButton
   ]
 })
 export class UserModule {
