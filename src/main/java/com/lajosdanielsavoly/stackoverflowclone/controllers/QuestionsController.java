@@ -6,11 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/questions")
 public class QuestionsController {
 
     private final QuestionService questionService;
@@ -19,11 +17,11 @@ public class QuestionsController {
         this.questionService = questionService;
     }
 
-    @PostMapping
+    @PostMapping("/questions")
     public ResponseEntity<?> postQuestion(@RequestBody QuestionDto questionDto) {
         QuestionDto createdQuestionDto = questionService.addQuestion(questionDto);
         if (createdQuestionDto == null) {
-            return new ResponseEntity<>("Something went wrong",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(createdQuestionDto);
     }
