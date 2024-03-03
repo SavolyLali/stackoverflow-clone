@@ -10,7 +10,7 @@
           <mat-label>Title</mat-label>
           <input matInput placeholder="Title" formControlName="title"/>
           <mat-error
-            *ngIf="validateForm.get('title').invalid && (validateForm.get('title').dirty || validateForm.get('title').touched)">
+            *ngIf="validateForm.get('title')?.invalid && (validateForm.get('title')?.dirty || validateForm.get('title')?.touched)">
             Title is required!
           </mat-error>
         </mat-form-field>
@@ -20,7 +20,7 @@
           <mat-label>Body</mat-label>
           <textarea matInput rows="6" placeholder="Body" formControlName="body"></textarea>
           <mat-error
-            *ngIf="validateForm.get('body').invalid && (validateForm.get('body').dirty || validateForm.get('body').touched)">
+            *ngIf="validateForm.get('body')?.invalid && (validateForm.get('body')?.dirty || validateForm.get('body')?.touched)">
             Body is required!
           </mat-error>
         </mat-form-field>
