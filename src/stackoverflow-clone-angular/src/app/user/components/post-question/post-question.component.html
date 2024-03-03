@@ -45,7 +45,7 @@
           </mat-chip-grid>
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" class="login-form-button login-form-margin" type="submit">Post
+      <button mat-raised-button color="primary" class="login-form-button login-form-margin" type="submit" [disabled]="validateForm.invalid" (click)="postQuestion()">Post
         Question
       </button>
     </form>
