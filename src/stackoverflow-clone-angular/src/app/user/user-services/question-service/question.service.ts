@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {StorageService} from "../../../auth-services/storage-service/storage.service";
 
 const BASIC_URL = ['http://localhost:8080/'];
 
@@ -15,6 +16,14 @@ export class QuestionService {
   }
 
   postQuestion(questionDto: any): Observable<any> {
-    return this.http.post<[]>(BASIC_URL + 'api/question', questionDto);
+    questionDto.userId = StorageService.getUserId();
+    console.log(questionDto);
+    return this.http.post<[]>(BASIC_URL + 'api/question', questionDto,
+      {headers: this.createAuthorizationHeader()});
+  }
+
+  createAuthorizationHeader(): HttpHeaders {
+    let authHeaders = new HttpHeaders();
+    return authHeaders.set('Authorization', 'Bearer ' + StorageService.getToken());
   }
 }

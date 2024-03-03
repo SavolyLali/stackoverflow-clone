@@ -4,65 +4,65 @@ const TOKEN = 'c_token';
 const USER = 'c_user';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class StorageService {
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    public saveUser(user: any) {
-        window.localStorage.removeItem(USER);
-        window.localStorage.setItem(USER, JSON.stringify(user));
-    }
+  public saveUser(user: any) {
+    window.localStorage.removeItem(USER);
+    window.localStorage.setItem(USER, JSON.stringify(user));
+  }
 
-    static getUser(): any {
-        return JSON.parse(localStorage.getItem(USER)!);
-    }
+  static getUser(): any {
+    return JSON.parse(localStorage.getItem(USER)!);
+  }
 
-    public saveToken(token: string) {
-        window.localStorage.removeItem(TOKEN);
-        window.localStorage.setItem(TOKEN, token);
-    }
+  public saveToken(token: string) {
+    window.localStorage.removeItem(TOKEN);
+    window.localStorage.setItem(TOKEN, token);
+  }
 
-    static getToken(): string {
-        return localStorage.getItem(TOKEN)!;
-    }
+  static getToken(): string {
+    return localStorage.getItem(TOKEN)!;
+  }
 
-    static isUserLoggedIn() {
-        return this.getToken() != null;
-    }
+  static isUserLoggedIn() {
+    return this.getToken() != null;
+  }
 
-    static logout() {
-        window.localStorage.removeItem(TOKEN);
-        window.localStorage.removeItem(USER);
-    }
+  static logout() {
+    window.localStorage.removeItem(TOKEN);
+    window.localStorage.removeItem(USER);
+  }
 
-    static hasToken() {
-        return this.getToken() !== null;
-    }
+  static hasToken() {
+    return this.getToken() !== null;
+  }
 
-    static getUserId() {
-        const user = this.getUser();
-        if (user == null) {
-            return '';
-        }
-        return user.getUserId()
+  static getUserId(): string {
+    const user = this.getUser();
+    if (user == null) {
+      return '';
     }
+    return user.userId;
+  }
 
-    static getUserRole() {
-        const user = this.getUser();
-        if (user == null) {
-            return '';
-        }
-        return user.getRole()
+  static getUserRole() {
+    const user = this.getUser();
+    if (user == null) {
+      return '';
     }
+    return user.role;
+  }
 
-    static isAdminLoggedIn() {
-        if (this.getToken() === null) {
-            return false;
-        }
-        const role = this.getUserRole();
-        return role === '1';
+  static isAdminLoggedIn() {
+    if (this.getToken() === null) {
+      return false;
     }
+    const role: string = this.getUserRole();
+    return role === '1';
+  }
 }

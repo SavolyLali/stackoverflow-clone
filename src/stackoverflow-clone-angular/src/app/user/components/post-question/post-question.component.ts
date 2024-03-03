@@ -22,7 +22,7 @@ export class PostQuestionComponent {
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-    // Add our fruit
+    // Add our tag
     if (value) {
       this.tags.push({name: value});
     }
@@ -68,6 +68,8 @@ export class PostQuestionComponent {
 
   postQuestion() {
     console.log(this.validateForm.value);
+    this.service.postQuestion(this.validateForm.value).subscribe((res) => {
+      console.log(res);
+    });
   }
-
 }

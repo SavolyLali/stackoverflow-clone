@@ -30,6 +30,7 @@ public class QuestionServiceImpl implements QuestionService {
             question.setBody(questionDto.getBody());
             question.setTags(questionDto.getTags());
             question.setCreatedDate(new Date());
+            question.setUser(optionalUser.get());
             Questions createdQuestion = questionRepository.save(question);
             QuestionDto createdQuestionDto = new QuestionDto();
             createdQuestionDto.setId(createdQuestion.getId());

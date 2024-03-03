@@ -23,6 +23,8 @@ public class Questions {
     @Column(name = "body", length = 512)
     private String body;
     private Date createdDate;
+
+    @ElementCollection(targetClass = String.class)
     private List<String> tags;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

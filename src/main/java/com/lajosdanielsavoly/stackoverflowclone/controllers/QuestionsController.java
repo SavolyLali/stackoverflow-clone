@@ -19,7 +19,7 @@ public class QuestionsController {
         this.questionService = questionService;
     }
 
-    @PostMapping("/questions")
+    @PostMapping("/question")
     public ResponseEntity<?> postQuestion(@RequestBody QuestionDto questionDto) {
         QuestionDto createdQuestionDto = questionService.addQuestion(questionDto);
         if (createdQuestionDto == null) {
