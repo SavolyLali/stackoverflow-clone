@@ -12,7 +12,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class PostQuestionComponent {
 
-  tags = [];
+  tags: { name: string }[] = [];
   isSubmitting!: boolean;
   addOnBlur = true;
   validateForm!: FormGroup;
@@ -67,7 +67,7 @@ export class PostQuestionComponent {
   }
 
   postQuestion() {
-
+    console.log(this.validateForm.value);
   }
 
 }
