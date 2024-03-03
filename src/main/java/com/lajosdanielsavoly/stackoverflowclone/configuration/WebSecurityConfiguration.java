@@ -35,7 +35,7 @@ public class WebSecurityConfiguration {
                 .permitAll()
                 .and()
                 .authorizeHttpRequests()
-                .anyRequest()
+                .requestMatchers("/api/**")
                 .authenticated()
                 .and()
                 .sessionManagement()

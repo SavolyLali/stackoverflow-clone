@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/questions")
+@RequestMapping("/api")
 public class QuestionsController {
 
     private final QuestionService questionService;
@@ -19,11 +19,11 @@ public class QuestionsController {
         this.questionService = questionService;
     }
 
-    @PostMapping
+    @PostMapping("/question")
     public ResponseEntity<?> postQuestion(@RequestBody QuestionDto questionDto) {
         QuestionDto createdQuestionDto = questionService.addQuestion(questionDto);
         if (createdQuestionDto == null) {
-            return new ResponseEntity<>("Something went wrong",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Something went wrong", HttpStatus.BAD_REQUEST);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(createdQuestionDto);
     }

@@ -10,8 +10,9 @@
   <mat-toolbar color="primary" class="navbar">
     <span class="navbar-brand">Stack Exchange</span>
     <span class="spacer"></span>
-    <button mat-button routerLink="/login" routerLinkActive="active">Dashboard</button>
-    <button mat-button (click)="logout()" routerLink="/signup" routerLinkActive="active">Logout</button>
+    <button mat-button routerLink="/user/dashboard" routerLinkActive="active">Dashboard</button>
+    <button mat-button routerLink="/user/question" routerLinkActive="active">Post Question</button>
+    <button mat-button (click)="logout()" routerLinkActive="active">Logout</button>
   </mat-toolbar>
 </div>
 <router-outlet></router-outlet>
