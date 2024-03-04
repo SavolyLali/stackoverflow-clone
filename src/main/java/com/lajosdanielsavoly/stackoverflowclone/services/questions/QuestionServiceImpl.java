@@ -1,5 +1,6 @@
 package com.lajosdanielsavoly.stackoverflowclone.services.questions;
 
+import com.lajosdanielsavoly.stackoverflowclone.dtos.AllQuestionResponseDto;
 import com.lajosdanielsavoly.stackoverflowclone.dtos.QuestionDto;
 import com.lajosdanielsavoly.stackoverflowclone.entities.Questions;
 import com.lajosdanielsavoly.stackoverflowclone.entities.User;
@@ -37,6 +38,11 @@ public class QuestionServiceImpl implements QuestionService {
             createdQuestionDto.setTitle(createdQuestion.getTitle());
             return createdQuestionDto;
         }
+        return null;
+    }
+
+    @Override
+    public AllQuestionResponseDto getAllQuestions(int pageNumber) {
         return null;
     }
 }
