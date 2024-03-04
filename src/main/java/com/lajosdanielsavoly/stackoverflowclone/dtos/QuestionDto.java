@@ -12,5 +12,6 @@ public class QuestionDto {
     private String body;
     private List<String> tags;
     private Long userId;
+    private String username;
 
 }
