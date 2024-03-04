@@ -22,6 +22,12 @@ export class QuestionService {
       {headers: this.createAuthorizationHeader()});
   }
 
+  getAllQuestions(pageNumber: number): Observable<any> {
+    return this.http.get<[]>(BASIC_URL + `api/questions?${pageNumber}`,
+      {headers: this.createAuthorizationHeader()}
+    );
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders = new HttpHeaders();
     return authHeaders.set('Authorization', 'Bearer ' + StorageService.getToken());
