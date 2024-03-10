@@ -23,7 +23,7 @@ export class QuestionService {
   }
 
   getAllQuestions(pageNumber: number): Observable<any> {
-    return this.http.get<[]>(BASIC_URL + `api/questions?${pageNumber}`,
+    return this.http.get<[]>(BASIC_URL + `api/questions/${pageNumber}`,
       {headers: this.createAuthorizationHeader()}
     );
   }
