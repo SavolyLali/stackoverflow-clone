@@ -1,18 +1,24 @@
 package com.lajosdanielsavoly.stackoverflowclone.services.questions;
 
+import com.lajosdanielsavoly.stackoverflowclone.dtos.AllQuestionResponseDto;
 import com.lajosdanielsavoly.stackoverflowclone.dtos.QuestionDto;
 import com.lajosdanielsavoly.stackoverflowclone.entities.Questions;
 import com.lajosdanielsavoly.stackoverflowclone.entities.User;
 import com.lajosdanielsavoly.stackoverflowclone.repositories.QuestionRepository;
 import com.lajosdanielsavoly.stackoverflowclone.repositories.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
+    public static final int SEARCH_RESULT_PER_PAGE = 5;
     private final UserRepository userRepository;
     private final QuestionRepository questionRepository;
 
@@ -38,5 +44,16 @@ public class QuestionServiceImpl implements QuestionService {
             return createdQuestionDto;
         }
         return null;
+    }
+
+    @Override
+    public AllQuestionResponseDto getAllQuestions(int pageNumber) {
+        Pageable paging = PageRequest.of(pageNumber, SEARCH_RESULT_PER_PAGE);
+        Page<Questions> questionsPage = questionRepository.findAll(paging);
+        AllQuestionResponseDto allQuestionResponseDto = new AllQuestionResponseDto();
+        allQuestionResponseDto.setQuestionDtoList(questionsPage.getContent().stream().map(Questions::getQuestionDto).collect(Collectors.toList()));
+        allQuestionResponseDto.setPageNumber(questionsPage.getPageable().getPageNumber());
+        allQuestionResponseDto.setTotalPages(questionsPage.getTotalPages());
+        return allQuestionResponseDto;
     }
 }

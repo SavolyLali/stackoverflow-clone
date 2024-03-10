@@ -1,6 +1,7 @@
 package com.lajosdanielsavoly.stackoverflowclone.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lajosdanielsavoly.stackoverflowclone.dtos.QuestionDto;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -33,4 +34,15 @@ public class Questions {
     @JsonIgnore
     private User user;
 
+    public QuestionDto getQuestionDto() {
+        QuestionDto questionDto = new QuestionDto();
+        questionDto.setId(id);
+        questionDto.setTitle(title);
+        questionDto.setBody(body);
+        questionDto.setTags(tags);
+        questionDto.setCreatedDate(createdDate);
+        questionDto.setUserId(user.getId());
+        questionDto.setUsername(user.getName());
+        return questionDto;
+    }
 }
