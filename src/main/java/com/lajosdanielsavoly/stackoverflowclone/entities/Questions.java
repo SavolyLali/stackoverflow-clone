@@ -36,12 +36,13 @@ public class Questions {
 
     public QuestionDto getQuestionDto() {
         QuestionDto questionDto = new QuestionDto();
-        questionDto.setId(this.id);
-        questionDto.setTitle(this.title);
-        questionDto.setBody(this.body);
-        questionDto.setTags(this.tags);
-        questionDto.setUserId(this.user.getId());
-        questionDto.setUsername(this.user.getName());
+        questionDto.setId(id);
+        questionDto.setTitle(title);
+        questionDto.setBody(body);
+        questionDto.setTags(tags);
+        questionDto.setCreatedDate(createdDate);
+        questionDto.setUserId(user.getId());
+        questionDto.setUsername(user.getName());
         return questionDto;
     }
 }
