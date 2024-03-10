@@ -26,7 +26,7 @@ public class QuestionsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdQuestionDto);
     }
 
-    @GetMapping("/question/{pageNumber}")
+    @GetMapping("/questions/{pageNumber}")
     public ResponseEntity<AllQuestionResponseDto> getAllQuestions(@PathVariable int pageNumber) {
         AllQuestionResponseDto allQuestionResponseDto = questionService.getAllQuestions(pageNumber);
         return ResponseEntity.ok(allQuestionResponseDto);
