@@ -2,6 +2,7 @@ package com.lajosdanielsavoly.stackoverflowclone.controllers;
 
 import com.lajosdanielsavoly.stackoverflowclone.dtos.AllQuestionResponseDto;
 import com.lajosdanielsavoly.stackoverflowclone.dtos.QuestionDto;
+import com.lajosdanielsavoly.stackoverflowclone.dtos.SingleQuestionDto;
 import com.lajosdanielsavoly.stackoverflowclone.services.questions.QuestionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +35,11 @@ public class QuestionsController {
 
     @GetMapping("/question/{questionId}")
     public ResponseEntity<?> getQuestionById(@PathVariable Long questionId) {
-        QuestionDto questionDto = questionService.getQuestionById(questionId);
-        return ResponseEntity.ok(questionDto);
+        SingleQuestionDto singleQuestionDto = questionService.getQuestionById(questionId);
+        if (singleQuestionDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(singleQuestionDto);
     }
 
 }
