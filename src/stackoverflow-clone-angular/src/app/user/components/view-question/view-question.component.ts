@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {QuestionService} from "../../user-services/question-service/question.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-view-question',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class ViewQuestionComponent {
 
+  questionId: number = this.activatedRoute.snapshot.params["questionId"];
+
+
+  constructor(
+    private questionService: QuestionService,
+    private activatedRoute: ActivatedRoute
+  ) {
+  }
 }
