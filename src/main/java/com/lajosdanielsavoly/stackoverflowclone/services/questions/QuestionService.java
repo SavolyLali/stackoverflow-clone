@@ -8,4 +8,6 @@ public interface QuestionService {
     QuestionDto addQuestion(QuestionDto questionDto);
 
     AllQuestionResponseDto getAllQuestions(int pageNumber);
+
+    QuestionDto getQuestionById(Long questionId);
 }
