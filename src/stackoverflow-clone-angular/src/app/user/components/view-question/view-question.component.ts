@@ -10,6 +10,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ViewQuestionComponent {
 
   questionId: number = this.activatedRoute.snapshot.params["questionId"];
+  question: any;
 
   constructor(
     private questionService: QuestionService,
@@ -25,6 +26,7 @@ export class ViewQuestionComponent {
     this.questionService.getQuestionById(this.questionId).subscribe(
       (response) => {
         console.log(response);
+        this.question = response.questionDto;
       }
     );
   }
