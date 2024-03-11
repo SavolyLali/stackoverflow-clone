@@ -32,4 +32,10 @@ public class QuestionsController {
         return ResponseEntity.ok(allQuestionResponseDto);
     }
 
+    @GetMapping("/question/{questionId}")
+    public ResponseEntity<?> getQuestionById(@PathVariable Long questionId) {
+        QuestionDto questionDto = questionService.getQuestionById(questionId);
+        return ResponseEntity.ok(questionDto);
+    }
+
 }
