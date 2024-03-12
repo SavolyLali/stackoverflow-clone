@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {QuestionService} from "../../user-services/question-service/question.service";
 import {ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {StorageService} from "../../../auth-services/storage-service/storage.service";
+import {AnswerService} from "../../user-services/answer-services/answer.service";
 
 @Component({
   selector: 'app-view-question',
@@ -16,6 +18,7 @@ export class ViewQuestionComponent {
 
   constructor(
     private questionService: QuestionService,
+    private answerService: AnswerService,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {
@@ -39,5 +42,14 @@ export class ViewQuestionComponent {
 
   addAnswer() {
     console.log(this.validateForm.value)
+    const data = this.validateForm.value;
+    data.questionId = this.questionId;
+    data.userId = StorageService.getUserId();
+    console.log(data);
+    this.answerService.postAnswer(data).subscribe(
+      (response) => {
+        console.log(response);
+      }
+    );
   }
 }
