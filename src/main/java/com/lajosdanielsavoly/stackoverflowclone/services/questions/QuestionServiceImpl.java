@@ -2,6 +2,7 @@ package com.lajosdanielsavoly.stackoverflowclone.services.questions;
 
 import com.lajosdanielsavoly.stackoverflowclone.dtos.AllQuestionResponseDto;
 import com.lajosdanielsavoly.stackoverflowclone.dtos.QuestionDto;
+import com.lajosdanielsavoly.stackoverflowclone.dtos.SingleQuestionDto;
 import com.lajosdanielsavoly.stackoverflowclone.entities.Questions;
 import com.lajosdanielsavoly.stackoverflowclone.entities.User;
 import com.lajosdanielsavoly.stackoverflowclone.repositories.QuestionRepository;
@@ -55,5 +56,13 @@ public class QuestionServiceImpl implements QuestionService {
         allQuestionResponseDto.setPageNumber(questionsPage.getPageable().getPageNumber());
         allQuestionResponseDto.setTotalPages(questionsPage.getTotalPages());
         return allQuestionResponseDto;
+    }
+
+    @Override
+    public SingleQuestionDto getQuestionById(Long questionId) {
+        Optional<Questions> optionalQuestion = questionRepository.findById(questionId);
+        SingleQuestionDto singleQuestionDto = new SingleQuestionDto();
+        optionalQuestion.ifPresent(question -> singleQuestionDto.setQuestionDto(question.getQuestionDto()));
+        return singleQuestionDto;
     }
 }

@@ -2,6 +2,7 @@ package com.lajosdanielsavoly.stackoverflowclone.controllers;
 
 import com.lajosdanielsavoly.stackoverflowclone.dtos.AllQuestionResponseDto;
 import com.lajosdanielsavoly.stackoverflowclone.dtos.QuestionDto;
+import com.lajosdanielsavoly.stackoverflowclone.dtos.SingleQuestionDto;
 import com.lajosdanielsavoly.stackoverflowclone.services.questions.QuestionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,15 @@ public class QuestionsController {
     public ResponseEntity<AllQuestionResponseDto> getAllQuestions(@PathVariable int pageNumber) {
         AllQuestionResponseDto allQuestionResponseDto = questionService.getAllQuestions(pageNumber);
         return ResponseEntity.ok(allQuestionResponseDto);
+    }
+
+    @GetMapping("/question/{questionId}")
+    public ResponseEntity<?> getQuestionById(@PathVariable Long questionId) {
+        SingleQuestionDto singleQuestionDto = questionService.getQuestionById(questionId);
+        if (singleQuestionDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(singleQuestionDto);
     }
 
 }
