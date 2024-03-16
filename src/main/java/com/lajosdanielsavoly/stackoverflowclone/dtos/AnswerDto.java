@@ -6,6 +6,16 @@ public class AnswerDto {
     private String body;
     private Long questionId;
     private Long userId;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 
     public Long getId() {
         return id;
