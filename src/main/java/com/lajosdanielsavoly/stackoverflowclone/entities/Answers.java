@@ -1,6 +1,7 @@
 package com.lajosdanielsavoly.stackoverflowclone.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lajosdanielsavoly.stackoverflowclone.dtos.AnswerDto;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -69,5 +70,15 @@ public class Answers {
 
     public void setQuestion(Questions question) {
         this.question = question;
+    }
+
+    public AnswerDto getAnswerDto() {
+        AnswerDto answerDto = new AnswerDto();
+        answerDto.setId(this.id);
+        answerDto.setBody(this.body);
+        answerDto.setUserId(this.user.getId());
+        answerDto.setUsername(this.user.getName());
+        answerDto.setQuestionId(this.question.getId());
+        return answerDto;
     }
 }
