@@ -58,6 +58,21 @@ h2 {
 
 ////////////////////////// Post Answer SCSS
 
+.answer-card {
+  border: 1px solid #cca;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .answer-card {
+    padding: 10px;
+  }
+}
+
 .answer-section {
   border: 1px solid #ccc;
   padding: 20px;
