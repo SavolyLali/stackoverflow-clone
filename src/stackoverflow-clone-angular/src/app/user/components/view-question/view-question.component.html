@@ -12,6 +12,20 @@
   </div>
 </div>
 
+<!-- ////////////////////////// View Answer HTML -->
+
+<div *ngFor="let answer of answers; let i = index;" class="answer-card" style="margin-top: 30px;">
+  <h2>Answers</h2>
+  <div>
+    <div>
+      <h5>Answerd by: <b>{{ answer.username }}</b> - Answered on:
+        <b>{{ answer.createdDate | date: 'MMM d, y, h:mm a' }}</b>
+      </h5>
+      <p>{{ answer.body }}</p>
+    </div>
+  </div>
+</div>
+
 <!-- ////////////////////////// Post Answer HTML -->
 
 <div class="answer-section" style="margin-top: 30px;">
