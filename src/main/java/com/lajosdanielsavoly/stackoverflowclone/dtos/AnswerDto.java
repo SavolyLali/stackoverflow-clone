@@ -1,9 +1,12 @@
 package com.lajosdanielsavoly.stackoverflowclone.dtos;
 
+import java.util.Date;
+
 public class AnswerDto {
 
     private Long id;
     private String body;
+    private Date createdDate;
     private Long questionId;
     private Long userId;
     private String username;
@@ -15,7 +18,6 @@ public class AnswerDto {
     public void setUsername(String username) {
         this.username = username;
     }
-
 
     public Long getId() {
         return id;
@@ -47,5 +49,13 @@ public class AnswerDto {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 }

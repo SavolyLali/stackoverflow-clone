@@ -76,6 +76,7 @@ public class Answers {
         AnswerDto answerDto = new AnswerDto();
         answerDto.setId(this.id);
         answerDto.setBody(this.body);
+        answerDto.setCreatedDate(this.createdDate);
         answerDto.setUserId(this.user.getId());
         answerDto.setUsername(this.user.getName());
         answerDto.setQuestionId(this.question.getId());
