@@ -16,6 +16,7 @@ export class ViewQuestionComponent {
   questionId: number = this.activatedRoute.snapshot.params["questionId"];
   question: any;
   validateForm!: FormGroup;
+  answers: any = [];
 
   constructor(
     private questionService: QuestionService,
@@ -35,11 +36,14 @@ export class ViewQuestionComponent {
 
   getQuestionById() {
     this.questionService.getQuestionById(this.questionId).subscribe(
-      (response) => {
+      (response: { questionDto: any, answerDtoList: any[] }) => {
         console.log(response);
         this.question = response.questionDto;
+        response.answerDtoList.forEach(element => {
+          this.answers.push(element);
+        });
       }
-    );
+    )
   }
 
   addAnswer() {
